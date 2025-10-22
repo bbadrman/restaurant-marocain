@@ -23,7 +23,7 @@ export const dishesData = [
     servings: 4,
   },
   {
-    id: 2,
+    id: 4,
     name: "Couscous Royal",
     description: "Couscous moelleux garni de légumes et viandes variées",
     price: 16.99,
@@ -46,7 +46,7 @@ export const dishesData = [
     servings: 6,
   },
   {
-    id: 3,
+    id: 6,
     name: "Pastilla Poulet",
     description: "Feuilletage croustillant farci de poulet et amandes",
     price: 14.99,
@@ -69,7 +69,7 @@ export const dishesData = [
     servings: 4,
   },
   {
-    id: 4,
+    id: 3,
     name: "Tajine Poisson",
     description: "Poisson frais avec légumes et sauce épicée",
     price: 17.99,
@@ -92,7 +92,7 @@ export const dishesData = [
     servings: 4,
   },
   {
-    id: 5,
+    id: 8,
     name: "Kefta Meatballs",
     description: "Boulettes de viande épicées avec sauce tomate",
     price: 12.99,
@@ -115,7 +115,7 @@ export const dishesData = [
     servings: 4,
   },
   {
-    id: 6,
+    id: 9,
     name: "Harira",
     description: "Soupe traditionnelle riche et réconfortante",
     price: 8.99,
@@ -138,7 +138,7 @@ export const dishesData = [
     servings: 6,
   },
   {
-    id: 7,
+    id: 2,
     name: "Tajine Poulet Citron",
     description: "Poulet avec citron confit et olives vertes",
     price: 16.99,
@@ -161,7 +161,7 @@ export const dishesData = [
     servings: 4,
   },
   {
-    id: 8,
+    id: 7,
     name: "Pastilla Fruits de Mer",
     description: "Pastilla garnie de crevettes et poisson",
     price: 16.99,
@@ -184,7 +184,7 @@ export const dishesData = [
     servings: 4,
   },
   {
-    id: 9,
+    id: 5,
     name: "Couscous Végétarien",
     description: "Couscous avec légumes de saison et pois chiches",
     price: 13.99,
