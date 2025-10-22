@@ -31,7 +31,7 @@ export default function MenuModal({ isOpen, onClose }: MenuModalProps) {
                 <div className="flex gap-4">
                   <div className="relative w-24 h-24 flex-shrink-0">
                     <Image
-                      src={dish.image ? `/uploads/${dish.image}` : "/placeholder.svg"}
+                      src={dish.image || "/placeholder.svg"}
                       alt={dish.name}
                       fill
                       className="object-cover rounded"

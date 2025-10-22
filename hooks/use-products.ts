@@ -284,7 +284,7 @@ export function useProducts() {
   useEffect(() => {
     const loadProducts = () => {
       try {
-        const stored = localStorage.getItem("moroccan_products")
+        const stored = localStorage.getItem("products")
         if (stored) {
           const customProducts = JSON.parse(stored)
           // Merge custom products with defaults, custom products override defaults
