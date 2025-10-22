@@ -1,117 +1,20 @@
 "use client"
 
 import { useState } from "react"
+import { useProducts } from "@/hooks/use-products"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import DishCard from "@/components/dish-card"
 import Cart from "@/components/cart"
 
-const allDishes = [
-  {
-    id: 1,
-    name: "Tajine Agneau",
-    description: "Agneau tendre cuit lentement avec pruneaux et amandes",
-    price: 18.99,
-    image: "/moroccan-tajine-lamb.jpg",
-    category: "Tajines",
-  },
-  {
-    id: 2,
-    name: "Tajine Poulet Citron",
-    description: "Poulet avec citron confit et olives vertes",
-    price: 16.99,
-    image: "/moroccan-chicken-tajine-lemon.jpg",
-    category: "Tajines",
-  },
-  {
-    id: 3,
-    name: "Tajine Poisson",
-    description: "Poisson frais avec légumes et sauce épicée",
-    price: 17.99,
-    image: "/moroccan-fish-tajine.jpg",
-    category: "Tajines",
-  },
-  {
-    id: 4,
-    name: "Couscous Royal",
-    description: "Couscous moelleux garni de légumes et viandes variées",
-    price: 16.99,
-    image: "/moroccan-couscous-royal.jpg",
-    category: "Couscous",
-  },
-  {
-    id: 5,
-    name: "Couscous Végétarien",
-    description: "Couscous avec légumes de saison et pois chiches",
-    price: 13.99,
-    image: "/moroccan-vegetarian-couscous.jpg",
-    category: "Couscous",
-  },
-  {
-    id: 6,
-    name: "Pastilla Poulet",
-    description: "Feuilletage croustillant farci de poulet et amandes",
-    price: 14.99,
-    image: "/moroccan-pastilla-chicken.jpg",
-    category: "Entrées",
-  },
-  {
-    id: 7,
-    name: "Pastilla Fruits de Mer",
-    description: "Pastilla garnie de crevettes et poisson",
-    price: 16.99,
-    image: "/moroccan-pastilla-seafood.jpg",
-    category: "Entrées",
-  },
-  {
-    id: 8,
-    name: "Kefta Meatballs",
-    description: "Boulettes de viande épicées avec sauce tomate",
-    price: 12.99,
-    image: "/moroccan-kefta-meatballs.jpg",
-    category: "Plats",
-  },
-  {
-    id: 9,
-    name: "Harira",
-    description: "Soupe traditionnelle riche et réconfortante",
-    price: 8.99,
-    image: "/moroccan-harira-soup.jpg",
-    category: "Soupes",
-  },
-  {
-    id: 10,
-    name: "Chorba",
-    description: "Soupe aux pois chiches et viande",
-    price: 9.99,
-    image: "/moroccan-chorba-soup.jpg",
-    category: "Soupes",
-  },
-  {
-    id: 11,
-    name: "Mint Tea",
-    description: "Thé à la menthe fraîche traditionnel",
-    price: 4.99,
-    image: "/moroccan-mint-tea.png",
-    category: "Boissons",
-  },
-  {
-    id: 12,
-    name: "Jus d'Orange Frais",
-    description: "Jus d'orange pressé frais",
-    price: 5.99,
-    image: "/fresh-orange-juice.png",
-    category: "Boissons",
-  },
-]
-
 export default function MenuPage() {
+  const { products } = useProducts()
   const [showCart, setShowCart] = useState(false)
   const [cartItems, setCartItems] = useState<any[]>([])
   const [selectedCategory, setSelectedCategory] = useState("Tous")
 
-  const categories = ["Tous", ...new Set(allDishes.map((d) => d.category))]
-  const filtered = selectedCategory === "Tous" ? allDishes : allDishes.filter((d) => d.category === selectedCategory)
+  const categories = ["Tous", ...new Set(products.map((d) => d.category))]
+  const filtered = selectedCategory === "Tous" ? products : products.filter((d) => d.category === selectedCategory)
 
   const addToCart = (dish: any) => {
     setCartItems((prev) => {

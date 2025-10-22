@@ -1,4 +1,22 @@
-export const dishesData = [
+"use client"
+
+import { useState, useEffect } from "react"
+
+export interface Product {
+  id: number | string
+  name: string
+  description: string
+  price: number
+  image: string
+  category: string
+  recipe?: string
+  ingredients?: string[]
+  prepTime?: string
+  cookTime?: string
+  servings?: number
+}
+
+const defaultProducts: Product[] = [
   {
     id: 1,
     name: "Tajine Agneau",
@@ -258,3 +276,34 @@ export const dishesData = [
     servings: 2,
   },
 ]
+
+export function useProducts() {
+  const [products, setProducts] = useState<Product[]>(defaultProducts)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const loadProducts = () => {
+      try {
+        const stored = localStorage.getItem("moroccan_products")
+        if (stored) {
+          const customProducts = JSON.parse(stored)
+          // Merge custom products with defaults, custom products override defaults
+          const merged = defaultProducts.map((p) => customProducts.find((cp: Product) => cp.id === p.id) || p)
+          // Add new custom products that don't exist in defaults
+          const newProducts = customProducts.filter((cp: Product) => !defaultProducts.find((p) => p.id === cp.id))
+          setProducts([...merged, ...newProducts])
+        } else {
+          setProducts(defaultProducts)
+        }
+      } catch (error) {
+        console.error("Error loading products:", error)
+        setProducts(defaultProducts)
+      }
+      setIsLoading(false)
+    }
+
+    loadProducts()
+  }, [])
+
+  return { products, isLoading }
+}
